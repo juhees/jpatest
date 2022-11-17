@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+	<persistence-unit name="jpatest"> <!-- 이름은 자유 -->
+		<class>kr.kwangan2.jpatest.entity.Board</class>
+		
+		<properties>
+		<!-- 필수속성 -->
+			<property name="javax.persistence.jdbc.driver" value="org.h2.Driver" /><!-- jdbc 드라이버 클래스 -->
+			<property name="javax.persistence.jdbc.user" value="sa" /><!-- 데이터베이스의 아이디 -->
+			<property name="javax.persistence.jdbc.password" value="" /><!-- 데이터베이스의 비밀번호 -->
+			<property name="javax.persistence.jdbc.url" value="jdbc:h2:tcp://localhost/~/test" /><!-- jdbc url의 정보 -->
+			<!-- dialect 클래스 설정 -->
+			<property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect" />
+			
+			<!--Hibernate jpa 구현체 설정-->
+			<property name="hibernate.show_sql" value="true" /> <!-- 하이버네이트가 생성한 sql을 콘솔에 출력 -->
+			<property name="hibernate.format_sql" value="true" /><!-- 하이버네이트가 생성한 sql을 출력할때 보기좋게함 -->
+			<property name="hibernate.use_sql" value="false" /><!-- sql에 포함된 주석도 같이 출력 -->
+			<property name="hibernate.id.new_generator_mappings" value="true" /><!-- 중요. true는 키값을 자동으로 증가시키기 위함. 키 생성 전략을 사용 -->
+			<property name="hibernate.hbm2ddl.auto" value="update" /> <!-- 테이블생성이나 변경, 삭제같은 ddl구문을 자동으로 실행할지 지정 -->
+			<!-- value 한번 create한 다음에는 update로 바꿔줘야함 -->
+			<!-- create를 계속 하게되면 매번 테이블이 새롭게 생성되어 데이터가 누적되지 않음 -->
+		</properties>
+	</persistence-unit>
+</persistence>
